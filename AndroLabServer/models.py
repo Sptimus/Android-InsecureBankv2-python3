@@ -1,10 +1,7 @@
 import os
 import base64
-
-#from datetime import datetime
 from sqlalchemy import Column, Integer, String
 from database import Base, db_session
-#import settings
 
 class User(Base):
     __tablename__ = 'users'
@@ -25,10 +22,9 @@ class User(Base):
     
     @property
     def values(self):
-        return {"username" : self.username,
-                "first_name" : self.first_name,
-                "last_name" : self.last_name,
-                }
+        return {"username": self.username,
+                "first_name": self.first_name,
+                "last_name": self.last_name}
 
 class Account(Base):
     __tablename__ = 'accounts'
@@ -39,7 +35,7 @@ class Account(Base):
     user_id = Column(Integer)
     user = Column(String(50))
 
-    def __init__(self, account_number=None, type=type, balance=None, user=None):
+    def __init__(self, account_number=None, type=None, balance=None, user=None):
         self.account_number = account_number
         self.type = type
         self.balance = balance
@@ -50,8 +46,6 @@ class Account(Base):
 
     @property
     def values(self):
-        return {"account_number" : self.account_number,
-                "type" : self.type,
-                "balance" : self.balance,
-                }    
-
+        return {"account_number": self.account_number,
+                "type": self.type,
+                "balance": self.balance}
